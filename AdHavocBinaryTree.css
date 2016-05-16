@@ -1,0 +1,32 @@
+svg.AdHavocBinaryTree circle.leafNode
+{
+	fill: red;
+	stroke: black
+}
+
+svg.AdHavocBinaryTree circle.parentNode
+{
+	fill: white;
+	stroke: black
+}
+svg.AdHavocBinaryTree line.connector
+{
+	stroke: black
+}
+
+svg.AdHavocBinaryTree circle.leafNode:hover
+{
+	cursor: pointer;
+	animation: border-pulsate 1.5s infinite;
+}
+svg.AdHavocBinaryTree circle.parentNode:hover
+{
+	cursor: standard;
+}
+
+@keyframes border-pulsate
+{
+	0% {fill : red;}
+	50% {fill: white;}
+	100% {fill: red;}
+}

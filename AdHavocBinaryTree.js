@@ -252,11 +252,17 @@ var AdHavocBinaryTree;
 	
 		var left = this.left;
 		var right = this.right;
-		var nodeColour = this.IsLeaf() ? "#ff0000" : "#ffffff";
+		var className = this.IsLeaf() ? "leafNode" : "parentNode";
 	
 		var existingCircle = this.tree.svgDoc.getElementById(_circleId(this));
 		if (existingCircle) {
-			$(existingCircle).velocity({cx:x, cy:y, fill: nodeColour});
+			$(existingCircle).velocity({
+					cx:x, cy:y
+				}, {
+					complete: function() {
+						existingCircle.setAttributeNS(null, "class", className);
+					}
+				});
 		}
 		else {
 			var circle = document.createElementNS(SVG_NS, "circle");
@@ -264,9 +270,8 @@ var AdHavocBinaryTree;
 			circle.setAttributeNS(null, "cx", x);
 			circle.setAttributeNS(null, "cy", y);
 			circle.setAttributeNS(null, "r", CIRCLE_RADIUS);
-			circle.setAttributeNS(null, "stroke", "black");
 			circle.setAttributeNS(null, "id", _circleId(this));
-			circle.setAttributeNS(null, "fill", nodeColour);
+			circle.setAttributeNS(null, "class", className);
 		
 			// Make the circle fade in.
 			circle.setAttributeNS(null, "opacity", 0);
@@ -301,7 +306,7 @@ var AdHavocBinaryTree;
 			line.setAttributeNS(null, "y1", y1);
 			line.setAttributeNS(null, "x2", x2);
 			line.setAttributeNS(null, "y2", y2);
-			line.setAttributeNS(null, "stroke", "black");
+			line.setAttributeNS(null, "class", "connector");
 			line.setAttributeNS(null, "id", _lineId(this, child));
 		
 			// Make the line fade in.
@@ -367,6 +372,7 @@ var AdHavocBinaryTree;
 	Tree.prototype.setSvg = function(svgDoc) {
 		if (svgDoc) {
 			this.svgDoc = svgDoc;
+			this.svgDoc.setAttributeNS(null, "class", "AdHavocBinaryTree");
 			this.svgCircles = document.createElementNS('http://www.w3.org/2000/svg','g');
 			this.svgCircles.setAttributeNS('http://www.w3.org/2000/svg','id','circleGroup');
 
