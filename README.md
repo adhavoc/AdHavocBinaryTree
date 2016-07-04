@@ -4,8 +4,11 @@ Javascript library for drawing nice binary trees
 I found that I needed to display a binary tree nicely and didn't like the options out there. I came up with an algorithm to display them, but I also wanted to tell others how I did it. And I wanted it to look nice too. So I added some animation in as well.
 
 ## To use this:
+Download the latest copy of velocity. It can be found at http://velocityjs.org, but the actual file should be here: https://raw.githubusercontent.com/julianshapiro/velocity/master/velocity.min.js
+
 In the <head> of your HTML page, include this:
 ```html
+<script src='velocity.min.js'></script>
 <script src="AdHavocBinaryTree.js"></script>
 <link rel="stylesheet" type="text/css" media="screen" href="AdHavocBinaryTree.css" />
 ```
